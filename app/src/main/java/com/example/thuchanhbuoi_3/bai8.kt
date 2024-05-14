@@ -22,7 +22,11 @@ fun main() {
         var s = readLine()!!.toInt()
 
         when (s) {
-            1 -> getThongTin(listThe)
+            1 -> {
+                for ( i in listThe){
+                    println(i.getThongTin())
+                }
+            }
             2 -> addTheMuon(listThe)
             3 -> deleteTheMuon(listThe)
         }
@@ -34,12 +38,6 @@ fun main() {
     } while (true)
 }
 
-fun getThongTin(listThe: MutableList<TheMuon>) {
-    println("Thong tin cac the muon!")
-    for (tm in listThe) {
-        println("Ma the muon: ${tm.mapm}, Ho ten: ${tm.hoten}, Tuoi: ${tm.tuoi}, Lop: ${tm.lop}, Ngay muon: ${tm.ngaymuon}, Han tra: ${tm.hantra}, So hieu sach: ${tm.sohieusach}")
-    }
-}
 
 fun addTheMuon(listThe: MutableList<TheMuon>) {
     print("Nhap ho ten sinh vien: ")
@@ -61,7 +59,9 @@ fun addTheMuon(listThe: MutableList<TheMuon>) {
 
     listThe.add(tm)
 
-    getThongTin(listThe)
+    for ( i in listThe){
+        println(i.getThongTin())
+    }
 }
 
 fun deleteTheMuon(listThe: MutableList<TheMuon>) {
@@ -77,5 +77,7 @@ fun deleteTheMuon(listThe: MutableList<TheMuon>) {
     }
     if (check == false)
         println("Giao vien khong ton tai")
-    getThongTin(listThe)
+    for ( i in listThe){
+        println(i.getThongTin())
+    }
 }

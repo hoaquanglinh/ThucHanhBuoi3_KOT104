@@ -1,11 +1,29 @@
 package com.example.thuchanhbuoi_3.modal_bai7;
 
-public class CBGV (magv: String, hoten: String, tuoi: Int, quequan: String, var luongcung: Double, var luongthuong: Double, var tienphat: Double)
-    : Nguoi(magv, hoten, tuoi, quequan)  {
+public class CBGV : Nguoi  {
 
-    fun luongthuclinh () : Double{
-        return luongcung + luongthuong - tienphat
+    var luongcung: Float
+    var luongthuong: Float?
+    var tienphat: Float?
+    var luongthuclinh: Float = 0f
+        get() = luongcung + (luongthuong?:0f) - (tienphat?:0f)
+
+    constructor(
+        magv: String,
+        hoten: String,
+        tuoi: Int?,
+        quequan: String,
+        luongcung: Float,
+        luongthuong: Float?,
+        tienphat: Float?
+    ) : super(magv, hoten, tuoi, quequan) {
+        this.luongcung = luongcung
+        this.luongthuong = luongthuong
+        this.tienphat = tienphat
     }
 
+    override fun getThongTin(): String {
+        return "CBGV:" + super.getThongTin() + ", luong cung: $luongcung, luong thuong: $luongthuong, tien phat: $tienphat"
+    }
 }
 

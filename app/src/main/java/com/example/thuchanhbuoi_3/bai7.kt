@@ -6,8 +6,8 @@ fun main() {
 
     var listCBGV = mutableListOf<CBGV>()
 
-    val cbgv = CBGV("GV12", "Nguyen Van Linh", 20, "Ha Noi", 15000.0, 10200.0, 200.0)
-    val cbgv1 = CBGV("GV13", "Hoa Quang Phuc", 22, "Thai Binh", 20000.0, 10200.0, 200.0)
+    val cbgv = CBGV("GV12", "Nguyen Van Linh", 20, "Ha Noi", 15000f, 10200f, 200f)
+    val cbgv1 = CBGV("GV13", "Hoa Quang Phuc", 22, "Thai Binh", 20000f, 10200f, 200f)
 
     listCBGV.add(cbgv)
     listCBGV.add(cbgv1)
@@ -24,17 +24,23 @@ fun main() {
 
         when (s) {
             1 -> {
-                getThongTin(listCBGV)
+                for (gv in listCBGV){
+                    println(gv.getThongTin())
+                }
             }
 
             2 -> {
                 addGV(listCBGV)
-                getThongTin(listCBGV)
+                for (gv in listCBGV){
+                    println(gv.getThongTin())
+                }
             }
 
             3 -> {
                 deleteGV(listCBGV)
-                getThongTin(listCBGV)
+                for (gv in listCBGV){
+                    println(gv.getThongTin())
+                }
             }
 
             4 -> {
@@ -50,16 +56,6 @@ fun main() {
     } while (true)
 }
 
-fun getThongTin(listCBGV: MutableList<CBGV>) {
-    println("Danh sach giao vien")
-    for (gv in listCBGV) {
-        println(
-            "Ma giao vien: ${gv.magv}, Ho ten: ${gv.hoten}, Tuoi: ${gv.tuoi}, Dia chi: ${gv.quequan}, " +
-                    "Lương cứng: ${gv.luongcung}, Tiền thưởng: ${gv.luongthuong}, Tiền phạt:  ${gv.tienphat} "
-        )
-    }
-}
-
 fun addGV(listCBGV: MutableList<CBGV>) {
     print("Nhap ma giao vien: ")
     var magv = readLine()
@@ -70,11 +66,11 @@ fun addGV(listCBGV: MutableList<CBGV>) {
     print("Nhap que quan: ")
     var quequan = readLine()
     print("Nhap luong giao vien: ")
-    var luongcung = readLine()!!.toDouble()
+    var luongcung = readLine()!!.toFloat()
     print("Nhap tien thuong: ")
-    var tienthuong = readLine()!!.toDouble()
+    var tienthuong = readLine()!!.toFloat()
     print("Nhap tien phat: ")
-    var tienphat = readLine()!!.toDouble()
+    var tienphat = readLine()!!.toFloat()
 
     val cbgv = CBGV(magv!!, hoten!!, tuoi, quequan!!, luongcung, tienthuong, tienphat)
 
@@ -101,7 +97,7 @@ fun deleteGV(listCBGV: MutableList<CBGV>) {
 
 fun luonglinhthuc(listCBGV: MutableList<CBGV>) {
     for (gv in listCBGV) {
-        println("Luong cua giao vien ${gv.hoten} la: ${gv.luongthuclinh()}")
+        println("Luong cua giao vien ${gv.hoten} la: ${gv.luongthuclinh}")
     }
 }
 
